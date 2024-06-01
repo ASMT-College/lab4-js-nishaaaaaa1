@@ -8,13 +8,13 @@
 <body>
     <form action="" method="post">
     email<input type=" email" name=" email" id=" email">
-        <br><br>
+        <br>
         password<input type=" password" name=" password" id=" password">
         <br>
-        <br>
+      
     
         Dob<input type="date" name="dob" id=" dob">
-        <br><br>
+        <br>
         <input type="submit" value="signup">
 </form><br>
 already have account; <a href="login.php"> login</a>
