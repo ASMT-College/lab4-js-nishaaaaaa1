@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            border-radius: 8px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        input[type="submit"] {
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: calc(100% - 22px); /* Adjust width to fit padding and border */
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        p {
+            margin-top: 10px;
+        }
+        a {
+            color: #4CAF50;
+            cursor: pointer;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="form-title">Login</h2>
+        <form id="login-form">
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" required>
+            
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" required>
+            
+            <input type="submit" value="Login">
+        </form>
+        
+        <form id="signup-form" class="hidden">
+            <label for="signup-username">Username:</label>
+            <input type="text" id="signup-username" required>
+            
+            <label for="signup-email">Email:</label>
+            <input type="email" id="signup-email" required>
+            
+            <label for="signup-password">Password:</label>
+            <input type="password" id="signup-password" required>
+            
+            <label for="signup-dob">Date of Birth:</label>
+            <input type="date" id="signup-dob" required>
+            
+            <input type="submit" value="Sign Up">
+        </form>
+        
+        <p id="toggle-text">Don't have an account? <a id="toggle-link">Sign up</a></p>
+    </div>
+
+    <script>
+        document.getElementById('toggle-link').addEventListener('click', function() {
+            var loginForm = document.getElementById('login-form');
+            var signupForm = document.getElementById('signup-form');
+            var formTitle = document.getElementById('form-title');
+            var toggleText = document.getElementById('toggle-text');
+            var toggleLink = document.getElementById('toggle-link');
+            
+            if (loginForm.classList.contains('hidden')) {
+                loginForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+                formTitle.textContent = 'Login';
+                toggleText.innerHTML = 'Don\'t have an account? <a id="toggle-link">Sign up</a>';
+            } else {
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+                formTitle.textContent = 'Sign Up';
+                toggleText.innerHTML = 'Already have an account? <a id="toggle-link">Login</a>';
+            }
+
+            // Re-attach event listener for the newly created link
+            document.getElementById('toggle-link').addEventListener('click', arguments.callee);
+        });
+
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Logged in!');
+        });
+
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Signed up!');
+        });
+    </script>
+</body>
+</html>
